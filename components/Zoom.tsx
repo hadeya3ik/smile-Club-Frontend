@@ -1,12 +1,12 @@
 'use client'
 import React from 'react'
-import Picture1 from '@/images/1.jpeg';
-import Picture2 from '@/images/2.jpeg';
-import Picture3 from '@/images/3.jpg';
-import Picture4 from '@/images/4.jpg'
-import Picture5 from '@/images/5.jpg'
-import Picture6 from '@/images/6.jpg'
-import Picture7 from '@/images/7.jpeg'
+import Picture1 from '@/images/pexels1.jpg';
+import Picture2 from '@/images/pexels2.jpg';
+import Picture3 from '@/images/pexels3.jpg';
+import Picture4 from '@/images/pexels4.jpg'
+import Picture5 from '@/images/pexels5.jpg'
+import Picture6 from '@/images/pexels6.jpg'
+import Picture7 from '@/images/pexels7.jpg'
 
 import Image from 'next/image';
 import { useScroll, useTransform, motion } from 'framer-motion';
