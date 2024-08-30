@@ -1,9 +1,17 @@
 import Image from "next/image";
-
+import Zoom from "@/components/Zoom";
+import ParallaxBg from "@/components/ParallaxBg";
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-    <div>this is hadeya . me </div>
+    <main className="">
+      <Zoom/>
+      <div className="h-screen">
+        lol
+      </div>
+      <ParallaxBg/>
+      <div className="h-screen">
+        lol
+      </div>
     </main>
   );
 }
