@@ -38,7 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${ppNeueMontreal.className} bg-green-100`}>{children}</body>
+      <body className={`${ppNeueMontreal.className}`}>{children}</body>
     </html>
   );
 }
