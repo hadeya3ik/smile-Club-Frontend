@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Ibarra_Real_Nova } from "next/font/google";
 import "./globals.css";
-import localfont from "next/font/local"; 
-const inter = Inter({ subsets: ["latin"] });
+import localfont from "next/font/local";
+
+const ibarraRealNova = Ibarra_Real_Nova({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Studio",
@@ -38,7 +39,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${ppNeueMontreal.className}`}>{children}</body>
+      <body className={`${ppNeueMontreal.variable} ${ibarraRealNova.className}`}>{children}</body>
     </html>
   );
 }

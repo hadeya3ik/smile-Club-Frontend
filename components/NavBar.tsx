@@ -28,21 +28,22 @@ const NavBar = () => {
 
   return (
     <motion.nav
-      className='sticky top-0 flex text-2xl justify-between px-8 py-1 sm:py-4 text-accent z-50'
-      variants={{
-        visible: { y: 0 },
-        hidden: { y: '-100%' },
-        initial: { 
-          y: '-100%',
-        },
-      }}
-      initial="initial"
-      animate={hiddenNav ? 'hidden' : 'visible'}
-      transition={{ duration: 0.8, ease: 'easeInOut' }} >
-
-    <div onClick={scrollToTop} className='cursor-pointer bg-accent px-4 py-2 rounded-[50%]'>
-      <p className='text-sm text-accent-foreground uppercase font-bold'>Hadeya</p>
-    </div>
+      className='md:p-12 sm:p-8 p-4 sticky top-0 flex justify-between z-50 text-gray-700 mix-blend-difference'
+      >
+        <motion.h1 
+        variants={{
+          visible: { y: 0, opacity : 1 },
+          hidden: { y: '0%', opacity : 0 },
+          initial: { 
+            y: '-50%',
+            opacity : 0
+          },
+        }}
+        initial="initial"
+        animate={hiddenNav ? 'hidden' : 'visible'}
+        transition={{ duration: 0.8, ease: 'easeInOut' }} 
+        className='text-3xl  mix-blend-difference'>
+        BRAND</motion.h1>
     </motion.nav>
   );
 }
