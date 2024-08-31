@@ -60,7 +60,7 @@ export default function Zoom() {
     );
 }
 
-function imagePositionClasses(index) {
+function imagePositionClasses(index : number) {
     switch (index) {
         case 1:
             return 'w-[35vw] h-[30vh] top-[-30vh] left-[5vw]';
