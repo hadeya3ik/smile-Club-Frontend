@@ -42,7 +42,7 @@ const NavBar = () => {
         initial="initial"
         animate={hiddenNav ? 'hidden' : 'visible'}
         transition={{ duration: 0.8, ease: 'easeInOut' }} 
-        className='text-3xl  mix-blend-difference '>
+        className='text-3xl z-[100] mix-blend-difference '>
         BRAND</motion.h1>
         <Header/>
     </motion.nav>

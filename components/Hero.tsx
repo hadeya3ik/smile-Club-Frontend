@@ -12,7 +12,7 @@ function Hero() {
         offset: ['start start', 'end end']
     });
 
-    const width = useTransform(scrollYProgress, [0, 1], ['50%', '100%']);
+    const width = useTransform(scrollYProgress, [0, 1], ['85%', '100%']);
 
     return ( <main>
             <Navigation/>
