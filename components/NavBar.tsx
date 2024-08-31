@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
 import Link from 'next/link';
+import Header from '@/components/Header'
 
 const NavBar = () => {
   const scrollToTop = () => {
@@ -28,7 +29,7 @@ const NavBar = () => {
 
   return (
     <motion.nav
-      className='md:p-12 sm:p-8 p-4 sticky top-0 flex justify-between z-50 text-gray-700 mix-blend-difference'
+      className='md:p-12 sm:p-8 p-4 sticky top-0 flex justify-between z-50 text-gray-700 '
       >
         <motion.h1 
         variants={{
@@ -42,8 +43,9 @@ const NavBar = () => {
         initial="initial"
         animate={hiddenNav ? 'hidden' : 'visible'}
         transition={{ duration: 0.8, ease: 'easeInOut' }} 
-        className='text-3xl  mix-blend-difference'>
+        className='text-3xl  mix-blend-difference '>
         BRAND</motion.h1>
+        <Header/>
     </motion.nav>
   );
 }

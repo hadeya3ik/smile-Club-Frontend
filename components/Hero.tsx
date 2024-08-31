@@ -27,7 +27,6 @@ function Hero() {
                                 src={Picture7}
                                 fill
                                 alt="image"
-                                placeholder="blur"
                                 className="object-cover"
                             />
                         </motion.div>
