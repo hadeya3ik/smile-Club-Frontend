@@ -7,7 +7,6 @@ import Picture4 from '@/images/pexels4.jpg'
 import Picture5 from '@/images/pexels5.jpg'
 import Picture6 from '@/images/pexels6.jpg'
 import Picture7 from '@/images/pexels7.jpg'
-
 import Image from 'next/image';
 import { useScroll, useTransform, motion } from 'framer-motion';
 import { useRef } from 'react';
