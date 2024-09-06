@@ -46,12 +46,31 @@ export default function Services() {
   const [modal, setModal] = useState<ModalProps>({ active: false, index: 0 });
 
   return (
-    <main className="flex h-screen items-center justify-center font-ppNeueMontreal">
+    <main className=" font-ppNeueMontreal">
+        
+        <div className='w-full flex justify-end'>
+            <motion.div
+            initial={{  }}
+            className="sticky h-[500px] w-[500px] overflow-hidden">
+            <div
+            style={{ top: modal.index * -100 + '%' }}
+            className="absolute transition-[top] duration-500">
+                {projects.map((project, index) => (
+                    <Image
+                    key={`modal_${index}`}
+                        src={project.src}
+                        height={500}
+                        alt={`${project.title} Image`}
+                    />
+                ))}
+            </div>
+        </motion.div>
+        </div>
       <div className="flex flex-col items-center justify-center w-full">
         {projects.map((project, index) => (
           <div
             key={index}
-            className="w-full flex justify-between items-center p-12 border-t cursor-pointer transition-all hover:opacity-50"
+            className="w-full flex justify-between items-center p-4 border-t cursor-pointer transition-all hover:opacity-50"
             onMouseEnter={() => setModal({ active: true, index })}
             onMouseLeave={() => setModal({ active: false, index })}
           >
@@ -61,30 +80,6 @@ export default function Services() {
           </div>
         ))}
       </div>
-
-      <motion.div
-        initial={{  x: '-50%', y: '-50%' }}
-        className="h-[600px] w-[600px] overflow-hidden  flex items-center justify-center pointer-events-none"
-      >
-        <div
-          style={{ top: modal.index * -100 + '%' }}
-          className="absolute transition-[top] duration-500 h-full w-full"
-        >
-          {projects.map((project, index) => (
-            <div
-              key={`modal_${index}`}
-              className="h-full w-full flex items-center justify-center"
-            >
-              <Image
-                src={project.src}
-                height={600}
-                alt={`${project.title} Image`}
-                className="object-cover"
-              />
-            </div>
-          ))}
-        </div>
-      </motion.div>
     </main>
   );
 }

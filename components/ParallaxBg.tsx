@@ -20,7 +20,7 @@ export default function ParallaxBg() {
             className='relative flex items-center justify-center h-[900px] overflow-hidden'
             style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
         >
-            <div className='fixed top-[-5vh] left-0 h-[100vh] w-full'>
+            <div className='fixed top-[-10vh] left-0 h-[120vh] w-full'>
                 <motion.div style={{ y }} className='relative w-full h-full'>
                     <Image src={Background} fill alt="image" style={{ objectFit: "cover" }} />
                 </motion.div>
