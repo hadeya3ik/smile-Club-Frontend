@@ -12,16 +12,20 @@ function Hero() {
         offset: ['start start', 'end end']
     });
 
-    const width = useTransform(scrollYProgress, [0, 1], ['85%', '100%']);
+    const width = useTransform(scrollYProgress, [0, 1], ['65%', '100%']);
 
     return ( <main>
             <Navigation/>
             <div ref={container} className="relative h-[300vh]">
                 <div className="sticky top-0 h-screen overflow-hidden">
-                    <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full">
+                    
+                    <div className="relative top-0 left-0 flex flex-col items-center justify-center w-full h-full ">
+                    <div className='md:p-12 sm:p-8 p-4 md:text-5xl sm:text-4xl text-3xl'>
+                        MODERN WALLS
+                    </div>
                         <motion.div
                             style={{ width }}
-                            className="relative h-[90vh] overflow-hidden"
+                            className="relative h-[50vh] sm:h-[90vh] overflow-hidden"
                         >
                             <Image
                                 src={Picture7}
