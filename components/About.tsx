@@ -24,8 +24,6 @@ function About() {
                 We focus on designing spaces that meet the needs of the people who use them.
             </p>
         </div>
-        
-    
     </div>
     <ParallaxBg/>
     </main>
