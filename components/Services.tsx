@@ -8,9 +8,11 @@ import pic2 from '@/images/pexels2.jpg';
 import pic3 from '@/images/pexels3.jpg';
 import pic4 from '@/images/pexels6.jpg';
 import pic5 from '@/images/pexels10.jpg';
+import { StaticImageData } from 'next/image';
+
 interface Project {
   title: string;
-  src: string;
+  src: StaticImageData;
   color: string;
 }
 
