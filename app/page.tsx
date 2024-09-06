@@ -6,13 +6,14 @@ import ParallaxBg from "@/components/ParallaxBg";
 import Hero from '@/components/Hero';
 import NavBar from '@/components/NavBar';
 import Footer from '@/components/Footer';
+import About from '@/components/About';
 
 export default function Home() {
   return ( <ReactLenis root>
     <main className="">
       <NavBar/>
       <Hero/>
-      {/* <ParallaxBg/> */}
+      <About/>
       <Footer/>
     </main>
     </ReactLenis>
