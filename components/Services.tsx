@@ -33,7 +33,7 @@ const projects: Project[] = [
     color: '#EFE8D3',
   },
   {
-    title: 'Silencio',
+    title: 'Bathrooms',
     src: pic4,
     color: '#706D63',
   },
@@ -61,7 +61,7 @@ export default function Services() {
         </div>
         <motion.div
         initial={{  }}
-        className="sticky top-0 h-[500px] w-[335px] overflow-hidden self-end ">
+        className="sticky top-12 h-[500px] w-[335px] overflow-hidden self-end">
             <div
                 style={{ top: modal.index * -100 + '%' }}
                 className="absolute transition-[top] duration-500">
@@ -70,6 +70,7 @@ export default function Services() {
                     key={`modal_${index}`}
                     src={project.src}
                     height={500}
+                    className='z-50'
                     alt={`${project.title} Image`}
                 />
                     ))}
@@ -96,7 +97,7 @@ export default function Services() {
         {projects.map((project, index) => (
           <div
             key={index}
-            className="w-full flex justify-between items-center p-4 border-t border-black cursor-pointer transition-all hover:opacity-50"
+            className="w-full flex justify-between items-center p-4 border-t z-0 mix-blend-difference border-black cursor-pointer transition-all hover:opacity-50"
             onMouseEnter={() => setModal({ active: true, index })}
             onMouseLeave={() => setModal({ active: false, index })}
           >
