@@ -8,6 +8,7 @@ import NavBar from '@/components/NavBar';
 import Footer from '@/components/Footer';
 import About from '@/components/About';
 import Services from '@/components/Services'
+import ClipGallery from '@/components/ClipGallery';
 
 export default function Home() {
   return ( <ReactLenis root>
@@ -16,6 +17,7 @@ export default function Home() {
       <Hero/>
       <About/>
       <Services/>
+      <ClipGallery/>
       <Footer/>
     </main>
     </ReactLenis>
