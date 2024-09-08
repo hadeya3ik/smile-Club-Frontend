@@ -1,52 +1,50 @@
-'use client';
-import React, { useState, useEffect } from 'react';
-import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
-import Header from '@/components/Header'
+'use client'
+import React, {useState, useEffect} from 'react'
+import {motion, useMotionValueEvent, useScroll} from 'framer-motion'
 
-const NavBar = () => {
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth', 
-    });
-  };
-
+function NavBar() {
   const [hiddenNav, setHiddenNav] = useState(false);
   const [previousScrollYProgress, setPreviousScrollYProgress] = useState(0);
-  const { scrollYProgress } = useScroll();
+  const {scrollYProgress} = useScroll();
 
-  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
-    const previous = previousScrollYProgress;
-    if (latest > previous) {
-      setHiddenNav(true);
-    } else {
-      setHiddenNav(false);
-    }
-    setPreviousScrollYProgress(latest);
-  });
+  useEffect(() => {
 
+    scrollYProgress.on("change", e => console.log(e))},[]); 
+
+    useMotionValueEvent(scrollYProgress, 'change', (latest) => {
+        const previous = previousScrollYProgress;
+        if (latest > previous ) {
+          setHiddenNav(true)
+        } else {
+            setHiddenNav(false)
+        }
+        setPreviousScrollYProgress(latest);
+      });
 
   return (
-    <motion.nav
-      className='md:p-12 sm:p-8 p-4 sticky top-0 flex justify-between z-50 text-gray-700 '
-      >
-        <motion.h1 
+    <motion.nav 
+        className='sticky top-0 w-ful px-8'
         variants={{
-          visible: { y: 0, opacity : 1 },
-          hidden: { y: '0%', opacity : 0 },
-          initial: { 
-            y: '-50%',
-            opacity : 0
-          },
+            visible: { y: 0},
+            hidden: {y: "-100%"}
         }}
-        initial="initial"
-        animate={hiddenNav ? 'hidden' : 'visible'}
-        transition={{ duration: 0.8, ease: 'easeInOut' }} 
-        className='text-3xl z-[100] mix-blend-difference '>
-        BRAND</motion.h1>
-        <Header/>
+        animate={hiddenNav ? "hidden" : "visible"}
+        transition={{duration:0.35, ease:"easeInOut"}}
+        >
+        <div className='pt-4 flex gap-4'>
+          <div className='w-min px-4 rounded-full border-4 border-black bg-orange-50 text-3xl font-medium'>
+            smile
+          </div>
+          <div className='w-min px-4 rounded-full border-4 border-black bg-orange-50 text-3xl font-medium'>
+            resources
+          </div>
+          <div className='w-min px-4 rounded-full border-4 border-black bg-orange-50 text-3xl font-medium'>
+            about
+          </div>
+        </div>
+        
     </motion.nav>
-  );
+  )
 }
 
-export default NavBar;
+export default NavBar
