@@ -8,9 +8,9 @@ import Cards from '@/components/Cards';
 export default function Home() {
   return ( <ReactLenis root>
     <main className="">
-      <div className='h-[40vh]'>
-      </div>
-      <Cards/>
+    <div className='sticky top-120'>
+  <Cards />
+</div>
     </main>
     </ReactLenis>
   );
