@@ -1,52 +1,58 @@
 'use client'
 import { useRef, useEffect } from 'react';
-import Image from 'next/image';
-import pink from '@/public/medias/pink.png'
-
+import Clouds from '@/images/Clouds.svg' 
 export default function Mask() {
-  const container = useRef(null);
-  const stickyMask = useRef(null);
+  const container = useRef<HTMLDivElement | null>(null);
+  const stickyMask = useRef<HTMLDivElement | null>(null);
 
   const initialMaskSize = 0.1;
-  const targetMaskSize = 30;
-  const easing = 0.85;
+  const targetMaskSize = 1.1;
+  const easing = 0.15;
   let easedScrollProgress = 0;
-
+  
   useEffect(() => {
     requestAnimationFrame(animate);
   }, []);
 
   const animate = () => {
-    const maskSizeProgress = targetMaskSize * getScrollProgress();
-    stickyMask.current.style.webkitMaskSize =
-      (initialMaskSize + maskSizeProgress) * 100 + '%';
+    if (stickyMask.current) {
+      const maskSizeProgress = targetMaskSize * getScrollProgress();
+      const scaleValue = initialMaskSize + maskSizeProgress;
+      stickyMask.current.style.transform = `scale(${scaleValue})`;
+    }
     requestAnimationFrame(animate);
   };
 
   const getScrollProgress = () => {
-    const scrollProgress =
-      stickyMask.current.offsetTop /
-      (container.current.getBoundingClientRect().height - window.innerHeight);
-    const delta = scrollProgress - easedScrollProgress;
-    easedScrollProgress += delta * easing;
-    return easedScrollProgress;
+    if (stickyMask.current && container.current ) {
+      const containerHeight = container.current.getBoundingClientRect().height;
+      const stickyTop = stickyMask.current.getBoundingClientRect().top;
+      const viewportMiddle = window.innerHeight / 2;
+      const scrollProgress = (viewportMiddle - stickyTop) / (containerHeight - window.innerHeight);
+      const delta = scrollProgress - easedScrollProgress;
+      easedScrollProgress += delta * easing;
+      return Math.max(0, Math.min(1, easedScrollProgress));
+    }
+    return 0;
   };
+  
 
   return (
-    <main className="mb-[100vh]">
-      <div ref={container} className="relative h-[200vh] bg-white">
+    <main className="bg-[#599CFF]">
+      <div ref={container} className="overflow-hidden">
         <div
           ref={stickyMask}
-          className="flex overflow-hidden sticky top-0 items-center justify-center"
+          className=" rounded-full transition-transform duration-300"
           style={{
-            WebkitMaskImage: "url('/medias/mask.svg')",
-            WebkitMaskPosition: '52.35% center',
-            WebkitMaskRepeat: 'no-repeat',
-            WebkitMaskSize: '10%',
+            width: '100vw',
+            height: '100vw',
+            backgroundColor: '#F4F2E3',
+            overflow: 'hidden',
+            transition: 'transform 0.3s ease-out',
           }}
         >
-          <Image alt="" src={pink} className="h-full w-full object-cover" /> 
         </div>
+        {/* <Clouds className="absolute top-[40%]"/> */}
       </div>
     </main>
   );
