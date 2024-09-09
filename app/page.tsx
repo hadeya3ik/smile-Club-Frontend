@@ -9,7 +9,7 @@ import Clouds from '@/images/Clouds.svg'
 import Sunset from '@/images/Sunset.svg'
 import Clouds1 from '@/images/Clouds-1.svg'
 import Clouds2 from '@/images/Clouds-2.svg'
-import CloudsA from '@/images/CLOUDSA.svg'
+import CloudsA from '@/images/CLOUDA.svg'
 
 
 export default function Home() {
@@ -19,12 +19,10 @@ export default function Home() {
       <NavBar/>
       <Hero className=''/>
       <Clouds2/>
-      <div className="bg-[#F4F2E3] h-screen">
-      <Clouds1 className="bg-[#F4F2E3]"/>
-      <div className="bg-[#FBD0F4] h-screen"></div>
+      <div className="bg-[#F4F2E3] h-screen -mt-1">
       </div>
-      {/* <Clouds1 className="bg-[#F4F2E3]"/> */}
-      <Sunset className="bg-[#FBD0F4]"/>
+      <Clouds1 className="bg-[#F4F2E3]"/>
+      <Sunset className="bg-[#FBD0F4] -mt-1"/>
     </main>
   </ReactLenis>
   );
