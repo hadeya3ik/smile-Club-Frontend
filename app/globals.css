@@ -17,3 +17,24 @@
   .folder {
     clip-path: polygon(20% 0%,80% 0%, 100% 100%, 0% 100%);
   }
+
+
+.main {
+  @apply mb-[100vh]; 
+}
+
+.container {
+  @apply relative h-[300vh] bg-white; 
+}
+
+.stickyMask {
+  @apply flex overflow-hidden sticky top-0 h-[100vh] items-center justify-center;
+  mask-image: url('/medias/mask.svg');
+  mask-position: 52.35% center;
+  mask-repeat: no-repeat;
+  mask-size: 80%;
+}
+
+.stickyMask video {
+  @apply h-full w-full object-cover; 
+}

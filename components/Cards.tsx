@@ -6,7 +6,7 @@ import About from '@/images/about.svg'
 
 function Cards() {
     return (
-        <div className='relative  border-8 md:px-16 lg:px-60 px-4 flex flex-col gap-[100vh]'>
+        <div className='pt-20 relative md:px-16 lg:px-60 px-4 flex flex-col gap-[100vh]'>
             <div className='sticky' style={{ top: `calc(-5% + ${1 * 7}vh + 10vh)` }}>
                 <About className="" />
             </div>
@@ -19,8 +19,7 @@ function Cards() {
             <div className='sticky' style={{ top: `calc(-5% + ${2.5 * 7}vh + 10vh)` }}> 
                 <Story className="" />
             </div>
-            <div className='h-[10vh]'>
-
+                <div className='h-[10vh]'>
             </div>
         </div>
     );
