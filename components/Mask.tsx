@@ -1,13 +1,15 @@
 'use client'
 import { useRef, useEffect } from 'react';
+import Image from 'next/image';
+import pink from '@/public/medias/pink.png'
 
 export default function Mask() {
   const container = useRef(null);
   const stickyMask = useRef(null);
 
-  const initialMaskSize = 0.1; 
-  const targetMaskSize = 2;   
-  const easing = 0.15;
+  const initialMaskSize = 0.1;
+  const targetMaskSize = 30;
+  const easing = 0.85;
   let easedScrollProgress = 0;
 
   useEffect(() => {
@@ -16,8 +18,8 @@ export default function Mask() {
 
   const animate = () => {
     const maskSizeProgress = targetMaskSize * getScrollProgress();
-    const scaleValue = initialMaskSize + maskSizeProgress;
-    stickyMask.current.style.transform = `scale(${scaleValue})`;
+    stickyMask.current.style.webkitMaskSize =
+      (initialMaskSize + maskSizeProgress) * 100 + '%';
     requestAnimationFrame(animate);
   };
 
@@ -32,19 +34,18 @@ export default function Mask() {
 
   return (
     <main className="mb-[100vh]">
-      <div ref={container} className="relative h-[300vh] bg-white">
+      <div ref={container} className="relative h-[200vh] bg-white">
         <div
           ref={stickyMask}
-          className="flex sticky top-0 items-center justify-center rounded-full transition-transform duration-300"
+          className="flex overflow-hidden sticky top-0 items-center justify-center"
           style={{
-            width: '100vw',
-            height: '100vh',
-            backgroundColor: '#ff69b4', // Change this color to any color you want for the mask
-            overflow: 'hidden',
-            transition: 'transform 0.3s ease-out',
+            WebkitMaskImage: "url('/medias/mask.svg')",
+            WebkitMaskPosition: '52.35% center',
+            WebkitMaskRepeat: 'no-repeat',
+            WebkitMaskSize: '10%',
           }}
         >
-          {/* No image, just a colored div */}
+          <Image alt="" src={pink} className="h-full w-full object-cover" /> 
         </div>
       </div>
     </main>
