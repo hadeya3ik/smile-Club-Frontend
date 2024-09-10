@@ -17,6 +17,11 @@ const config: Config = {
         ppNeueMontreal: ['var(--font-ppneuemonteal)', 'sans-serif'],
         ibarraRealNova: ['Ibarra Real Nova', 'serif'],
       },
+      colors: {
+        primary: '#F4F2E3', // white
+        secondary: '#599CFF', //blue
+        tertiary: '#F798C0', // third color
+      },
     },
   },
   plugins: [],

@@ -32,21 +32,23 @@ function NavBar() {
         animate={hiddenNav ? "hidden" : "visible"}
         transition={{duration:0.35, ease:"easeInOut"}}
         >
-        <div className='pt-4 flex gap-4'>
-          <div className='w-min px-4 pb-1 rounded-full border-2 border-black bg-[#EFFA78] text-4xl'>
+        <div className='pt-4 flex justify-between'>
+          <div className='w-min px-4 pb-1 rounded-full bg-primary text-2xl sm:text-5xl border-2 sm:border-4 border-black'>
             <Link href="/">
               smile
             </Link>
           </div>
-          <div className='w-min px-4 pb-1 rounded-full border-2 border-black bg-[#D1B6F0] text-4xl'>
-            <Link href="/resources">
-              resources
-            </Link>
-          </div>
-          <div className='w-min px-4 pb-1 rounded-full border-2 border-black bg-[#F09D7B] text-4xl'>
-            <Link href="/about">
-              about
-            </Link>
+          <div className='flex gap-2'>
+            <div className='w-min px-4 pb-1 rounded-full  bg-[#ddbfff] text-2xl sm:text-5xl border-2 sm:border-4 border-black'>
+              <Link href="/resources">
+                resources
+              </Link>
+            </div>
+            <div className='w-min px-4 pb-1 rounded-full bg-[#c3f2a2] text-2xl sm:text-5xl border-2 sm:border-4 border-black'>
+              <Link href="/about">
+                about
+              </Link>
+            </div>
           </div>
         </div>
         
