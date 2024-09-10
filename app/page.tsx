@@ -35,7 +35,7 @@ export default function Home() {
     <main className="bg-secondary">
       <NavBar/>
       <Hero className=''/>
-      <div className="bg-primary h-screen -mt-4">
+      <div className="bg-primary -mt-1">
         <About></About>
       </div>
       <Clouds1 className="bg-primary text-tertiary"/>
