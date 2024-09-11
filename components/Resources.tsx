@@ -124,11 +124,11 @@ function Card({ card } : {card : cardProps}) {
     return (
         <a href={link} target="_blank" rel="noopener noreferrer">
             <div style={{ background: color }} className="w-fit border-2 sm:border-4 border-black rounded-3xl">
-                <div className="p-12">
+                <div className="max-w-48 sm:max-w-sm md:p-16 m-auto p-4">
                     {Icon && <Icon />}
                 </div>
-                <div className='flex flex-col gap-4 p-4'>
-                    <h1 className="sm:text-3xl md:text-4xl">{title}</h1>
+                <div className='flex flex-col gap-2 sm:gap-4 p-4'>
+                    <h1 className="sm:text-3xl md:text-4xl text-2xl">{title}</h1>
                     <p className="max-w-lg text-base sm:text-2xl">{desc}</p>
                 </div>
             </div>
