@@ -13,10 +13,14 @@ import SciShow from '@/images/Resources/SciShow.svg'
 import Three from '@/images/Resources/Three.svg'
 import UofW from '@/images/Resources/UofW.svg'
 import React, { useState } from 'react';
+import {motion} from 'framer-motion'
 
 function Resources() {
     const [selectedType, setSelectedType] = useState('all');
     const [selectedSubject, setSelectedSubject] = useState('all');
+    
+    const typeOptions = ['all', 'app', 'support', 'video'];
+    const subjectOptions = ['all', 'happiness', 'motivation', 'mindfulness', 'connection', 'depression', 'counseling', 'anxiety', 'assault'];
   
     const handleTypeChange = (type) => {
       setSelectedType(type);
@@ -26,6 +30,7 @@ function Resources() {
       setSelectedSubject(subject);
     };
   
+    // Filter cards based on selected type and subject
     const filteredCards = resourceCards.filter(card => {
       const matchesType = selectedType === 'all' || card.type.includes(selectedType);
       const matchesSubject = selectedSubject === 'all' || card.subject.includes(selectedSubject);
@@ -33,50 +38,87 @@ function Resources() {
     });
   
     return (
-      <main>
-        <div className="filters">
-          <h3 className='text-xl sm:text-3xl md:text-5xl whitespace-nowrap'>Filter by Type:</h3>
-          <Button isSelected={selectedType === 'all'} onClick={() => handleTypeChange('all')}>All</Button>
-          <Button isSelected={selectedType === 'app'} onClick={() => handleTypeChange('app')}>App</Button>
-          <Button isSelected={selectedType === 'support'} onClick={() => handleTypeChange('support')}>Support</Button>
-          <Button isSelected={selectedType === 'video'} onClick={() => handleTypeChange('video')}>Video</Button>
+      <main className='flex flex-col gap-4 py-4'>
+        <div className="">
+          <h3 className="text-xl sm:text-3xl md:text-4xl whitespace-nowrap p-2">Filter by Type:</h3>
+          <div className="flex gap-1 sm:gap-2">
+            {typeOptions.map((type) => (
+                <Button
+                key={type}
+                isSelected={selectedType === type}
+                onClick={() => handleTypeChange(type)}>
+                {type.charAt(0).toUpperCase() + type.slice(1)}
+                </Button>
+            ))}
+          </div>
         </div>
-        <div className="filters">
-          <h3 className='text-xl sm:text-3xl md:text-5xl whitespace-nowrap'>Filter by Subject:</h3>
-          <Button isSelected={selectedSubject === 'all'} onClick={() => handleSubjectChange('all')}>All</Button>
-          <Button isSelected={selectedSubject === 'happiness'} onClick={() => handleSubjectChange('happiness')}>Happiness</Button>
-          <Button isSelected={selectedSubject === 'motivation'} onClick={() => handleSubjectChange('motivation')}>Motivation</Button>
-          <Button isSelected={selectedSubject === 'mindfulness'} onClick={() => handleSubjectChange('mindfulness')}>Mindfulness</Button>
-          <Button isSelected={selectedSubject === 'connection'} onClick={() => handleSubjectChange('connection')}>Connection</Button>
-          <Button isSelected={selectedSubject === 'depression'} onClick={() => handleSubjectChange('depression')}>Depression</Button>
-          <Button isSelected={selectedSubject === 'counseling'} onClick={() => handleSubjectChange('counseling')}>Counseling</Button>
-          <Button isSelected={selectedSubject === 'anxiety'} onClick={() => handleSubjectChange('anxiety')}>Anxiety</Button>
-          <Button isSelected={selectedSubject === 'assault'} onClick={() => handleSubjectChange('assault')}>Assault</Button>
+        <div className="">
+          <h3 className="text-xl sm:text-3xl md:text-4xl whitespace-nowrap p-2">Filter by Subject:</h3>
+          <div className="flex flex-wrap gap-1 sm:gap-2">
+            {subjectOptions.map((subject) => (
+                <Button
+                key={subject}
+                isSelected={selectedSubject === subject}
+                onClick={() => handleSubjectChange(subject)}
+                >
+                {subject.charAt(0).toUpperCase() + subject.slice(1)}
+                </Button>
+            ))}
+          </div>
         </div>
   
-        <div className="flex flex-wrap gap-4">
-          {filteredCards.map((item, index) => (
-            <Card key={index} card={item} />
-          ))}
+        <div className='flex flex-col sm:flex-row sm:gap-4'>
+          <div className='flex-1 xl:flex gap-4'>
+            <div className='flex-1 gap-4'>
+              {filteredCards.filter((item, index) => index % 4 === 0).map((item, index) => (
+                <motion.div layout key={index} className='h-fit mb-4'>
+                  <Card card={item} />
+                </motion.div>
+              ))}
+            </div>
+            <div className='flex-1 gap-4'>
+              {filteredCards.filter((item, index) => index % 4 === 1).map((item, index) => (
+                <motion.div layout key={index} className='h-fit mb-4'>
+                  <Card card={item} />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+          <div className='flex-1 xl:flex gap-4'>
+            <div className='flex-1 gap-4'>
+              {filteredCards.filter((item, index) => index % 4 === 2).map((item, index) => (
+                <motion.div layout key={index} className='h-fit mb-4'>
+                  <Card card={item} />
+                </motion.div>
+              ))}
+            </div>
+            <div className='flex-1 gap-4'>
+              {filteredCards.filter((item, index) => index % 4 === 3).map((item, index) => (
+                <motion.div layout key={index} className='h-fit mb-4'>
+                  <Card card={item} />
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
       </main>
     );
-}
-  
+  }
+
 function Card({ card }) {
     const { title, Icon, desc, link, color } = card;
 
     return (
         <a href={link} target="_blank" rel="noopener noreferrer">
-        <div style={{ background: color }} className="sm:min-h-60 min-h-40 flex items-center p-4 gap-4 w-fit border-2 sm:border-4 border-black rounded-3xl">
-            <div className="h-[100px] w-[100px]">
-            {Icon && <Icon />}
+            <div style={{ background: color }} className="w-fit border-2 sm:border-4 border-black rounded-3xl">
+                <div className="p-12">
+                    {Icon && <Icon />}
+                </div>
+                <div className='flex flex-col gap-4 p-4'>
+                    <h1 className="sm:text-3xl md:text-4xl">{title}</h1>
+                    <p className="max-w-lg text-base sm:text-2xl">{desc}</p>
+                </div>
             </div>
-            <div>
-            <h1 className="sm:text-3xl md:text-4xl">{title}</h1>
-            <p className="max-w-lg text-base sm:text-2xl">{desc}</p>
-            </div>
-        </div>
         </a>
     );
 }
@@ -85,7 +127,7 @@ function Button({ children, isSelected, onClick }) {
     return (
       <button
         onClick={onClick}
-        className={`w-min sm:px-4 px-2 sm:pb-1 pb-0 rounded-full text-xl sm:text-3xl md:text-4xl border-2 sm:border-4 border-black ${
+        className={`w-min sm:px-4 px-2 sm:pb-1 pb-0 rounded-full text-xl sm:text-3xl md:text-5xl border-2 sm:border-4 border-black ${
           isSelected ? 'bg-black text-primary' : 'bg-primary text-black'
         }`}
       >
@@ -97,15 +139,6 @@ function Button({ children, isSelected, onClick }) {
 export default Resources
 
 const resourceCards = [
-    {
-        title: "AloeBud",
-        desc: "A self care app that promotes personal growth through customized reminders and positive reinforcements",
-        Icon: AloeBud,
-        link: "https://www.aloebud.app/",
-        color: "#98E0DD",
-        type: ["app"],
-        subject: ["happiness", "mindfulness"]
-      },
       {
         title: "Daily Bean",
         desc: "An App providing custom mood analysis and journaling, helping users understand emotional patterns and activity impacts",
@@ -157,6 +190,14 @@ const resourceCards = [
         type: ["video"],
         subject: ["counseling" , "depression", "anxiety"]
     }, {
+        title  : "Rootd",
+        desc : "An App with over 2 million users that provides on demand relief of anxiety and panic attack relief",
+        Icon : Rootd, 
+        link : "https://www.rootd.io/", 
+        color : "#59BEBF", 
+        type: ["app"],
+        subject: ["anxiety" , "mindfulness"]
+    }, {
         title  : "Motivation Madness",
         desc : "A YouTube channel offering daily inspiration to help viewers pursue dreams and happiness ",
         Icon : MotivationMadness, 
@@ -172,15 +213,23 @@ const resourceCards = [
         color : "#7CEF69", 
         type: ["video"],
         subject: ["motivation" , "mindfulness"]
+    },  {
+        title  : "Student Success Office",
+        desc : "The Student Success Office provides resources for achieving academic and leadership goals, including immigration and international opportunities",
+        Icon : UofW, 
+        link : "https://uwaterloo.ca/student-success/", 
+        color : "#FAD357", 
+        type: ["support"],
+        subject: ["counseling"]
     }, {
-        title  : "Rootd",
-        desc : "An App with over 2 million users that provides on demand relief of anxiety and panic attack relief",
-        Icon : Rootd, 
-        link : "https://www.rootd.io/", 
-        color : "#59BEBF", 
+        title: "AloeBud",
+        desc: "A self care app that promotes personal growth through customized reminders and positive reinforcements",
+        Icon: AloeBud,
+        link: "https://www.aloebud.app/",
+        color: "#98E0DD",
         type: ["app"],
-        subject: ["anxiety" , "mindfulness"]
-    }, {
+        subject: ["happiness", "mindfulness"], 
+      }, {
         title  : "Sci Show psych",
         desc : "A support group hosted by Anthony Brown, Brit Garner, and Hank Green which explored psychology topics. ",
         Icon : SciShow, 
@@ -212,13 +261,5 @@ const resourceCards = [
         color : "#FAD357", 
         type: ["support"],
         subject: ["depression", "anxiety", "counseling"]
-    },  {
-        title  : "Student Success Office",
-        desc : "The Student Success Office provides resources for achieving academic and leadership goals, including immigration and international opportunities",
-        Icon : UofW, 
-        link : "https://uwaterloo.ca/student-success/", 
-        color : "#FAD357", 
-        type: ["support"],
-        subject: ["counseling"]
-    }, 
+    }
 ]

@@ -24,7 +24,7 @@ function NavBar() {
 
   return (
     <motion.nav 
-        className='sticky top-0 w-ful px-8 z-[1000]'
+        className='sticky top-0 w-full px-8 z-[1000]'
         variants={{
             visible: { y: 0},
             hidden: {y: "-100%"}
