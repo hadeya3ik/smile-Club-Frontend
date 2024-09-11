@@ -15,6 +15,22 @@ import UofW from '@/images/Resources/UofW.svg'
 import React, { useState } from 'react';
 import {motion} from 'framer-motion'
 
+interface cardProps {
+    title: string
+    desc: string
+    Icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
+    link: string
+    color: string
+    type: string[]
+    subject: string[]
+}
+
+interface ButtonProps {
+    children: React.ReactNode;
+    isSelected: boolean;
+    onClick: () => void;
+}
+
 function Resources() {
     const [selectedType, setSelectedType] = useState('all');
     const [selectedSubject, setSelectedSubject] = useState('all');
@@ -22,11 +38,11 @@ function Resources() {
     const typeOptions = ['all', 'app', 'support', 'video'];
     const subjectOptions = ['all', 'happiness', 'motivation', 'mindfulness', 'connection', 'depression', 'counseling', 'anxiety', 'assault'];
   
-    const handleTypeChange = (type) => {
+    const handleTypeChange = (type : string) => {
       setSelectedType(type);
     };
   
-    const handleSubjectChange = (subject) => {
+    const handleSubjectChange = (subject : string) => {
       setSelectedSubject(subject);
     };
   
@@ -105,7 +121,7 @@ function Resources() {
     );
   }
 
-function Card({ card }) {
+function Card({ card } : {card : cardProps}) {
     const { title, Icon, desc, link, color } = card;
 
     return (
@@ -123,7 +139,9 @@ function Card({ card }) {
     );
 }
 
-function Button({ children, isSelected, onClick }) {
+
+  
+function Button({ children, isSelected, onClick }: ButtonProps) {
     return (
       <button
         onClick={onClick}
@@ -134,11 +152,11 @@ function Button({ children, isSelected, onClick }) {
         {children}
       </button>
     );
-}
+  }
 
 export default Resources
 
-const resourceCards = [
+const resourceCards : cardProps[] = [
       {
         title: "Daily Bean",
         desc: "An App providing custom mood analysis and journaling, helping users understand emotional patterns and activity impacts",
