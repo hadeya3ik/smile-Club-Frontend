@@ -31,7 +31,7 @@ interface ButtonProps {
     onClick: () => void;
 }
 
-function Resources() {
+export default function Resources() {
     const [selectedType, setSelectedType] = useState('all');
     const [selectedSubject, setSelectedSubject] = useState('all');
     
@@ -46,7 +46,6 @@ function Resources() {
       setSelectedSubject(subject);
     };
   
-    // Filter cards based on selected type and subject
     const filteredCards = resourceCards.filter(card => {
       const matchesType = selectedType === 'all' || card.type.includes(selectedType);
       const matchesSubject = selectedSubject === 'all' || card.subject.includes(selectedSubject);
@@ -82,7 +81,6 @@ function Resources() {
             ))}
           </div>
         </div>
-  
         <div className='flex flex-col sm:flex-row sm:gap-4'>
           <div className='flex-1 xl:flex gap-4'>
             <div className='flex-1 gap-4'>
@@ -119,11 +117,10 @@ function Resources() {
         </div>
       </main>
     );
-  }
+}
 
 function Card({ card } : {card : cardProps}) {
     const { title, Icon, desc, link, color } = card;
-
     return (
         <a href={link} target="_blank" rel="noopener noreferrer">
             <div style={{ background: color }} className="w-fit border-2 sm:border-4 border-black rounded-3xl">
@@ -139,8 +136,6 @@ function Card({ card } : {card : cardProps}) {
     );
 }
 
-
-  
 function Button({ children, isSelected, onClick }: ButtonProps) {
     return (
       <button
@@ -152,9 +147,8 @@ function Button({ children, isSelected, onClick }: ButtonProps) {
         {children}
       </button>
     );
-  }
+}
 
-export default Resources
 
 const resourceCards : cardProps[] = [
       {
