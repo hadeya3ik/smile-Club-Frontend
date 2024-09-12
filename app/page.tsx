@@ -39,10 +39,10 @@ export default function Home() {
         <About></About>
       </div>
       <Clouds1 className="bg-primary text-tertiary"/>
-      <div className="bg-tertiary">
+      <div className="bg-tertiary -mt-4">
         <Faq/>
       </div>
-      <Sunset className="bg-tertiary -mt-1"/>
+      <Sunset className="bg-tertiary "/>
       <div className='-mt-8 py-4 w-full flex bg-secondary'>
         <a target="_blank" href="https://www.instagram.com/uwsmileclub/" className='cursor-pointer'>
         <MovingIcon>

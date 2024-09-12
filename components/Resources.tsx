@@ -140,7 +140,7 @@ function Button({ children, isSelected, onClick }: ButtonProps) {
     return (
       <button
         onClick={onClick}
-        className={`w-min sm:px-4 px-2 sm:pb-1 pb-0 rounded-full text-xl sm:text-3xl md:text-5xl border-2 sm:border-4 border-black ${
+        className={`w-min sm:px-4 px-2 sm:pb-1 pb-0 rounded-full text-xl sm:text-3xl md:text-3xl border-2 sm:border-4 border-black ${
           isSelected ? 'bg-black text-primary' : 'bg-primary text-black'
         }`}
       >
