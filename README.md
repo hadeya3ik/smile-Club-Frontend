@@ -1,1 +1,1 @@
-frontend for modern wall studio
+frontend for the SMILE club at The University of Waterloo 
